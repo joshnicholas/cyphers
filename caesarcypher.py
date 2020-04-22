@@ -4,7 +4,7 @@
 latin_alpha = {1:'a', 2:'b', 3:'c', 4:'d', 5:'e', 6:'f', 7:'g', 8:'h', 9:'i', 10:'j', 11:'k', 12:'l', 13:'m', 14:'n', 15:'o', 16:'p', 17:'q', 18:'r', 19:'s', 20:'t', 21:'u', 22:'v', 23:'w', 24:'x', 25:'y', 26:'z'}
 
 test_string = "Moe is the owner and operator of Moe's Tavern, frequented by Homer Simpson and other characters including Lenny Leonard, Carl Carlson, Sam and Larry and his former most loyal customer, Barney Gumble. The bar is noted for its depressing atmosphere and uncleanliness. The regular patrons of the tavern have been abandoned by Moe in several episodes in which he changes its target audience."
-encrypted_string = "prh lv wkh rzqhu dqg rshudwru ri prh'v wdyhuq, iuhtxhqwhg eb krphu vlpsvrq dqg rwkhu fkdudfwhuv lqfoxglqj ohqqb ohrqdug, fduo fduovrq, vdp dqg oduub dqg klv iruphu prvw orbdo fxvwrphu, eduqhb jxpeoh. wkh edu lv qrwhg iru lwv ghsuhvvlqj dwprvskhuh dqg xqfohdqolqhvv. wkh uhjxodu sdwurqv ri wkh wdyhuq kdyh ehhq dedqgrqhg eb prh lq vhyhudo hslvrghv lq zklfk kh fkdqjhv lwv wdujhw dxglhqfh."
+encrypted_string = "yaq ue ftq aizqd mzp abqdmfad ar yaq'e fmhqdz, rdqcgqzfqp nk tayqd euybeaz mzp aftqd otmdmofqde uzoxgpuzs xqzzk xqazmdp, omdx omdxeaz, emy mzp xmddk mzp tue radyqd yaef xakmx ogefayqd, nmdzqk sgynxq. ftq nmd ue zafqp rad ufe pqbdqeeuzs mfyaebtqdq mzp gzoxqmzxuzqee. ftq dqsgxmd bmfdaze ar ftq fmhqdz tmhq nqqz mnmzpazqp nk yaq uz eqhqdmx qbueapqe uz ituot tq otmzsqe ufe fmdsqf mgpuqzoq."
 
 ### DICTIONARY UNPACKERS
 
@@ -31,24 +31,26 @@ def cypherisor(dict, string, offset, encrypt):
                 temp += " "
             else:
                 if encrypt == True:
-                    if init_num >= 24:
+                    if init_num >= (27 -offset):
                         init_num -= 26
 
                     offsetted = init_num + offset
                     new_letter = return_value(latin_alpha, offsetted)    
                     temp += new_letter
                 else: 
-                    if init_num <= 3:
+                    if init_num <= offset:
                         init_num += 26
                     offsetted = init_num - offset
                     new_letter = return_value(latin_alpha, offsetted)    
                     temp += new_letter    
     return temp
 
-crypted = cypherisor(latin_alpha,test_string, 3, True)
+crypted = cypherisor(latin_alpha,test_string, 12, True)
 
 print(crypted)
 
-decrypted = cypherisor(latin_alpha,encrypted_string, 3, False)
+decrypted = cypherisor(latin_alpha,encrypted_string, 12, False)
 
 print(decrypted)
+
+
